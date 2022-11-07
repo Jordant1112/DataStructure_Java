@@ -14,6 +14,23 @@ public class SortDemoCode {
 
         int[] selectArray = selectSearch(arr);
         System.out.println(Arrays.toString(selectArray));
+
+        int[] arr1 = {3, 2, 1, 0, 40, 50, 60, 7, 8, 90};
+        int[] insertArray = insertSearch(arr1);
+        System.out.println(Arrays.toString(insertArray));
+    }
+
+    private static int[] insertSearch(int[] s){
+        for (int i = 1; i < s.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if(s[j] < s[j-1]){
+                    int tmp = s[j];
+                    s[j] = s[j-1];
+                    s[j-1] = tmp;
+                }
+            }
+        }
+        return s;
     }
 
     private static int[] selectSearch(int[] s){
