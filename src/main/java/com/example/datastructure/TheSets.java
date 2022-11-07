@@ -44,8 +44,8 @@ public class TheSets {
     }
     //record Ball(String color){} //if use record, no need to worry about the set(no override).
 }
-
-public class Stack{
+/*
+public static classß Stack{
     private Object[] elements;
     private int size = 0;
     private static final int DEFAULT_INITIAL_CAPACITY = 16;
@@ -73,3 +73,5 @@ public class Stack{
         }
     }
 }
+
+ */
