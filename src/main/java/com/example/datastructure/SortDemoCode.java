@@ -29,6 +29,42 @@ public class SortDemoCode {
         int[] mergeArray = mergeSort(arr2,0, 3 ,arr2.length-1);
         System.out.println(Arrays.toString(mergeArray));
 
+        int[] bucketArray = bucketSort(arr2);
+
+    }
+
+    private static int[] bucketSort(int[] arr) {
+        int[][] tmp = new int[10][arr.length];
+        int max = getMax(arr);
+        int len = String.valueOf(max).length();
+        int[] counts = new int[10];
+        for (int i = 0, n = 1; i < len; i++, n*=10) {
+            for (int j = 0; j < arr.length; j++) {
+                int value = arr[j]/n%10;
+                tmp[value][counts[value]++] = arr[j];
+            }
+            int index = 0;
+            for (int k = 0; k < counts.length; k++) {
+                if(counts[k] != 0){
+                    for (int h = 0; h < counts[k]; h++) {
+                        arr[index] = tmp[k][h];
+                        index++;
+                    }
+                }
+                counts[k] = 0; //clear the counts from previous round
+            }
+        }
+
+    }
+
+    private static int getMax(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if(arr[i] > max){
+                max = arr[i];
+            }
+        }
+        return max;
     }
 
     private static int[] mergeSort(int[] array, int start, int center, int end){
